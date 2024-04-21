@@ -17,7 +17,9 @@ const ListOfMovies = ({ navigation }) => {
 
     const handleMoviePress = (movie) => {
         // Navigate to a new screen or perform some action
-        console.log('Movie selected:', movie.title);
+        //console.log('Movie selected:', movie.title);
+
+        navigation.navigate('MovieDetails', { title: movie.title, releaseYear: movie.releaseYear });
     };
 
     const renderItem = ({ item }) => (
@@ -34,7 +36,17 @@ const ListOfMovies = ({ navigation }) => {
             <Text>Use a FlatList and display the list of movies</Text>
             <FlatList
                 data={movies}
-                renderItem={renderItem}
+                //renderItem={renderItem}
+                renderItem={({ item }) => (
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('MovieDetails', {
+                            title: item.title,
+                            releaseYear: item.releaseYear
+                        })}
+                    >
+                        <Text>{item.title}</Text>
+                    </TouchableOpacity>
+                )}
                 keyExtractor={(item, index) => index.toString()}
             />
         </View>

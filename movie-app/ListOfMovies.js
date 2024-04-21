@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 
 const ListOfMovies = ({ navigation }) => {
 
@@ -15,12 +15,27 @@ const ListOfMovies = ({ navigation }) => {
     const [movies, setMovies] = useState(startingDataSource);
 
 
+    const handleMoviePress = (movie) => {
+        // Navigate to a new screen or perform some action
+        console.log('Movie selected:', movie.title);
+    };
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity onPress={() => handleMoviePress(item)}>
+            <View style={[styles.item, styles.border]}>
+                <Text style={styles.movieTitle}>{item.title}</Text>
+                <Text style={styles.releaseYear}>Release Year: {item.releaseYear}</Text>
+            </View>
+        </TouchableOpacity>
+    );
+
     return (
         <View style={styles.container}>     
             <Text>Use a FlatList and display the list of movies</Text>
             <FlatList
-data={startingDataSource}
-                
+                data={movies}
+                renderItem={renderItem}
+                keyExtractor={(item, index) => index.toString()}
             />
         </View>
     );

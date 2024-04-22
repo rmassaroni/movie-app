@@ -6,8 +6,8 @@ const MovieDetails = ({ route, navigation }) => {
 return (
     <View style={styles.container}>
             
-        <Text> Display movie title here </Text>    
-        <Text> Display release year here </Text>         
+        <Text> Title: {route.params.title} </Text>    
+        <Text> Release Year: {route.params.releaseYear} </Text>         
     </View>
   );
 }

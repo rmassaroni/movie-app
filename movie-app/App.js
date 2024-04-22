@@ -1,55 +1,32 @@
-//import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { FlatList, TouchableOpacity } from 'react-native';
 import ListOfMovies from './ListOfMovies';
 import MovieDetails from './MovieDetails';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
 
-function MyStack() {
-  return (
-        //<NavigationContainer>
-    <Stack.Navigator>
-   //<Stack.Screen name="ListOfMovies" component={ListOfMovies} />
+const Stack = createNativeStackNavigator();
 
-    </Stack.Navigator>
-    //</NavigationContainer>
-  );
-}
 
 export default function App() {
-  return (
-    //Use the NavigationContainer and the Stack to display your app
-    //ListOfMovies is just here as a place holder.
-
-    //<ListOfMovies />
-        //MyStack()
-        <NavigationContainer>
-
-      //<Text>MyStack()</Text>
-            <Stack.Navigator>
-                <Stack.Screen name="ListOfMovies" component={ListOfMovies} />
-
+    return (
+        <NavigationContainer> 
+            <Stack.Navigator initialRouteName='ListOfMovies'>
+                <Stack.Screen name="Movies" component={ListOfMovies} />
+                <Stack.Screen name="Details" component={MovieDetails} />
             </Stack.Navigator>
-      </NavigationContainer>
-    //<NavigationContainer>
-    //  <Stack.Navigator>
-    //    <Stack.Screen name="Home" component={ListOfMovies} />
-    //    <Stack.Screen name="MovieDetails" component={MovieDetails} />
-    //  </Stack.Navigator>
-    //         <StatusBar style="auto" />
-    //</NavigationContainer>
-  );
+
+        </NavigationContainer> 
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });

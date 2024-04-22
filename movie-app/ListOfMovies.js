@@ -29,7 +29,7 @@ const ListOfMovies = ({ navigation }) => {
 
     return (
         <View style={styles.container}>     
-            <Text>Use a FlatList and display the list of movies</Text>
+            //<Text>Use a FlatList and display the list of movies</Text>
             <FlatList
                 data={movies}
                 renderItem={renderItem}

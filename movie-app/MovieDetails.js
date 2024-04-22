@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
-const MovieDetails = ({ route }) => {
-    const { title, releaseYear } = route.params;
+const MovieDetails = ({ route, navigation }) => {
 
-    return (
-        <View style={styles.container}>
-
-            <Text style={styles.title}>Title: {title}</Text>
-            <Text style={styles.releaseYear}>Release Year: {releaseYear}</Text>
-        </View>
-    );
+return (
+    <View style={styles.container}>
+            
+        <Text> Display movie title here </Text>    
+        <Text> Display release year here </Text>         
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

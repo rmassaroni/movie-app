@@ -14,21 +14,25 @@ const ListOfMovies = ({ navigation }) => {
 
     const [movies, setMovies] = useState(startingDataSource);
 
+    const handleMoviePress = (movie) => {
+        console.log(movie.title);
+    }
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity onPress={() => handleMoviePress(item)}>
+            <View style={[styles.item, styles.border]}>
+                <Text style={styles.movieTitle}>{item.title}</Text>
+                <Text style={styles.releaseYear}>Release Year: {item.releaseYear}</Text>
+            </View>
+        </TouchableOpacity>
+    );
+
     return (
         <View style={styles.container}>     
             <Text>Use a FlatList and display the list of movies</Text>
             <FlatList
                 data={movies}
-                renderItem={({ item }) => (
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('MovieDetails', {
-                            title: item.title,
-                            releaseYear: item.releaseYear
-                        })}
-                    >
-                        <Text>{item.title}</Text>
-                    </TouchableOpacity>
-                )}
+                renderItem={renderItem}
                 keyExtractor={(item, index) => index.toString()}
             />
         </View>
